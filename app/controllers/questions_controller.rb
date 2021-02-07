@@ -4,8 +4,9 @@ class QuestionsController < ApplicationController
     question  = QuestionService.new(session).random
 
     render json: {
-      text: question[0],
-      answers: question[1]
+      id: question.id,
+      text: question.text,
+      answers: question.answers
     }
   end
 end

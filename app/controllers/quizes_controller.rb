@@ -34,7 +34,7 @@ class QuizesController < ApplicationController
   def progress
     render json: {
       current: service.answers.count,
-      total: QUESTIONS
+      total: QuizService::QUESTIONS
     }
   end
 

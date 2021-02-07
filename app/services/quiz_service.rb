@@ -6,7 +6,7 @@ class QuizService
   end
 
   def clear
-    session[:answers] ||= {}
+    session[:answers] = {}
   end
 
   def answers
@@ -14,8 +14,8 @@ class QuizService
   end
 
   def answer(question_id, answer)
-    if session[:answers].keys.include? question_id
-      session[:answers][question_id] = Question.questions[question_id][2][answer]
+    if session[:answers].keys.include? question_id.to_s
+      session[:answers][question_id.to_s] = Question.questions[question_id.to_i][1][answer.to_i][1]
     end
   end
 
