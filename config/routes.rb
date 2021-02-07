@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   root to: 'landing#index'
-  resources :landing, only: %i[index]
+  resource :landing, only: %i[index]
 
-  resources :quizes, only: %i[index create update show] do
+  resource :quizes, only: %i[create] do
+    get :index
     get :progress
+    get :result
+    put :update
   end
 
   resource :questions do
