@@ -14,8 +14,12 @@ gem 'webpacker'
 gem 'foreman'
 
 group :development, :test do
-  gem 'pry-byebug'
   gem 'pry-rails'
+end
+
+group :test do
+  gem 'rspec-rails'
+  gem 'shoulda-matchers', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
