@@ -1,8 +1,6 @@
 class QuestionService
   class NoMoreQuestions < StandardError; end
 
-  QuestionRecord = Struct.new(:id, :text, :answers)
-
   def initialize(session)
     @session = session
   end
@@ -24,9 +22,7 @@ class QuestionService
       session[:answers][question_id] = nil
     end
 
-    question = ::Question.questions[question_id.to_i]
-
-    QuestionRecord.new(question_id, question[0], question[1].map(&:first))
+    Question.new(question_id)
   end
 
   private

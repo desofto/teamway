@@ -14,12 +14,12 @@ class QuizesController < ApplicationController
       return
     end
 
-    score = service.answers.sum
+    result = QuizResultService.new(service.score)
 
     render json: {
-      score: score,
-      title: score > 8 ? 'Introvert' : 'Extravert',
-      description: 'Some description'
+      score: result.score,
+      title: result.title,
+      description: result.description
     }
   end
 

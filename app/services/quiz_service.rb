@@ -13,9 +13,13 @@ class QuizService
     session[:answers].values.compact
   end
 
+  def score
+    answers.sum
+  end
+
   def answer(question_id, answer)
     if session[:answers].keys.include? question_id.to_s
-      session[:answers][question_id.to_s] = Question.questions[question_id.to_i][1][answer.to_i][1]
+      session[:answers][question_id.to_s] = Question.new(question_id).score(answer)
     end
   end
 

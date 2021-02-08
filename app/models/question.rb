@@ -1,4 +1,23 @@
 class Question
+  attr_reader :id
+
+  def initialize(id)
+    @id = id
+    @question = ::Question.questions[id.to_i]
+  end
+
+  def text
+    @text ||= @question[0]
+  end
+
+  def answers
+    @answers ||= @question[1].map(&:first)
+  end
+
+  def score(answer_id)
+    @question[1][answer_id.to_i][1]
+  end
+
   class << self
     def questions
       @questions ||= [
